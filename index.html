@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+        <!-- 3 -->
+        <!-- we can use this interpolation syntax to render properties from our vue data
+        this will convert all type if data to string and render on screen -->
+        <p>{{ greet }}</p>
+
+        <!-- 4 -->
+        <!-- now you need to know that the interpolation syntax will only work between
+        opening and closing brackets where you want show html content
+        many times we also have to provide dynamic property to html attributes as well
+        so for that we use v-bind: directive which will bind data property to html attribute
+        and we can use v-bind to almost all html attributes -->
+        <a v-bind:href="vueDoc"> Go to Doc.</a>
+
+        <!-- 5 -->
+        <!-- now it is important to understand that in interpolation and v-bind you are not just
+        limited to use data properties only you can also use any simple javascript 
+        expression   -->
+        <p> {{ 1 + 1 }} </p>
+        <p> {{ Math.random() > 0.5 ? 'greater' : 'small' }} </p>
+
+        <!-- as you can see we can also use js expressions in v-bind and keep in 
+        mind that this v-bind sony need something as string so that it can use
+        it as property value hear our expression will return string so it's ok -->
+        <a v-bind:href="Math.random() > 0.5 ? 'greater' : 'small'"> link </a>
+
+        <!-- hear we are using v-bind but using static data so it need as string
+        so we will also quote it in '' so it will be string -->
+        <a v-bind:href="'hiii'"> link 2</a>
+
+        <!-- because we use any js expression in this we also can call methods like that -->
+        <p> {{ randomString() }} </p>
+
+
+
+        <p> counter is {{ counter }} </p>
+
+        <p> inline js </p>
+        <!-- 7 -->
+        <!-- as like data binding we can also bind events to elements for that we have to
+        use another directive which is v-on: and then event name we want to listen  
+        the v-on can also able to parse js expressions so we can use small js expressions
+        hear and can also point to methods in our vue object. and we can listen to all
+        possible events by v-on-->
+        <button v-on:click="counter++">Add</button>
+        <button v-on:click="counter--">Reduce</button>
+
+        <!-- you can see hear that we can pass value to a method as well like this
+        and also if we don't want to pass any value we can just use method name
+        without () it will also work fine also you can use () if you don't want to pass
+        anything as well -->
+        <p> in method </p>
+        <button v-on:click="addOrReduce('add')">Add</button>
+        <button v-on:click="addOrReduce('reduce')">Reduce</button> <br><br>
+
+        <!-- NOTE: using {{}}  and v-bind is call data binding because we bind our
+        html element to value we have in our vue object. and using v-on is call 
+        event binding because we are binding element with some event and when that
+    `   event will occur define task in v-on will done -->
+
+        <!-- 8 -->
+        <!-- <input type="text" v-on:input="changeMyName" /> -->
+        <!-- sometimes it also happen that we have to pass something with event
+        so to do that we can use built in variable provide by vue $event and pass other params also -->
+        <input type="text" v-on:input="changeMyName($event)" />
+        <p> my name : {{ myName }} </p>
+
+    </div>
+</body>
+
+
+<script src="https://unpkg.com/vue@next"></script>
+<script src="main.js"></script>
+
+</html>
