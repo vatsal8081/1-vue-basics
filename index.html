@@ -77,6 +77,74 @@
         <input type="text" v-on:input="changeMyName($event)" />
         <p> my name : {{ myName }} </p>
 
+        <!-- 9 -->
+        <!-- there are also some event modifiers available on events we can use then to change
+        the behavior of an event. not all type of event modifiers are available on 
+        events but you can use many useful of then and a full list is available on
+        vue3 official docs
+        the syntax of event modifier is v-on:<event_name>.<modifier_name>  -->
+        <button v-on:click.right="clickBtn"> right click</button>
+
+        <!-- 10 -->
+        <!-- in our template some times we want that dynamic property which we bind
+        only change once and then it stays same in template weather it's change in
+        data or not we can use v-once directive -->
+        <p v-once> counter value will stays initial : {{ counter }} </p>
+
+        <!-- 11 -->
+        <!-- many times in our code it also happens that in a input field we want
+        to change our data property when we input something and also when that data
+        property change in our code we want our input value to be updated as well
+        for that we can use v-on:input for listen to input value change event and updated
+        our data and for detect changes on data property and update we can bind 
+        our input field value with data property with v-bind:value -->
+        <input type="text" v-on:input="updateInputValue" v-bind:value="inputOne">
+        <p> {{ inputOne }} </p>
+
+        <!-- this is vary common task in vue js to bind input value with data in a way
+        that if changes happen in data template side or in code side we want ro update
+        it on both actual value and on template as well and this is called tow way binding
+        for achieve more simply vue offer use built in directive called v-model 
+        this will only need name of data and it will listen both changes and update data
+        both side so we don't need to create different function to listen changes and no need
+        to bind data by our self-->
+        <input type="text" v-model="inputTwo">
+        <p> {{ inputTwo }} </p>
+
+        <!-- 12 -->
+        <!-- vary imp -->
+        <!-- notice one thing in code when we click to add or reduce counter buttons
+        we can see that randomString() and all places where we use Math.random() is also
+        rendering we can see that every time small and grater changes so those functions
+        are rendering every time something changes  and it's not a issue with Math
+        library it will happen in simple method as well -->
+
+        {{ detectChange() }}
+
+        <!-- as you can tell by console that every time we increase counter or type
+        something in input fields we can see new console and you can clearly see that
+        detectChange() and math function don't have any relation with counter or input
+        data property so they should not change right?  -->
+
+        <!-- what is happening hear is that when vue find some data property we use in 
+        template is updated it re render only that value in dom but when we use direct
+        functions in template then vue don't know on which property change it should
+        re render that function so every time when some small thing updated vue will
+        also re render all functions which we use on {{}} and data binding like v-bind
+        it will not be the case for event binding because vue knows that on which 
+        event it should call that function. so you can see hear all places where we
+        use functions for data binding all those functions are re rendering and 
+        this can be big performance because all those type of functions will re execute
+        on every small change-->
+
+        <!-- so moral of the story is you should avoid using direct functions for 
+        data bindings like in {{}} and in v-bind and v-html etc-->
+
+        <!-- so for those kind of situation where we have to use methods in data 
+        binding we can use another feature provided by vue which we will learn next -->
+
+
+
     </div>
 </body>
 

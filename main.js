@@ -12,7 +12,9 @@ const vueApp = Vue.createApp({
             greet: "Hello there.",
             vueDoc: "https://v3.vuejs.org/",
             counter: 0,
-            myName: ''
+            myName: '',
+            inputOne: '',
+            inputTwo: ''
         };
     },
 
@@ -47,6 +49,22 @@ const vueApp = Vue.createApp({
         changeMyName(event) {
             this.myName = event.target.value
         },
+
+
+        clickBtn() {
+            alert('right click happen.')
+        },
+
+        updateInputValue(event) {
+            this.inputOne = event.target.value
+        },
+
+
+        detectChange() {
+            console.log('func called..');
+            return 'hi'
+        }
+
 
 
 
