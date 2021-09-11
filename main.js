@@ -14,7 +14,9 @@ const vueApp = Vue.createApp({
             counter: 0,
             myName: '',
             inputOne: '',
-            inputTwo: ''
+            inputTwo: '',
+            attribute: 'href',
+            event: 'click'
         };
     },
 
