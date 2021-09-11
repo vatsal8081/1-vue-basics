@@ -81,7 +81,8 @@
         <!-- there are also some event modifiers available on events we can use then to change
         the behavior of an event. not all type of event modifiers are available on 
         events but you can use many useful of then and a full list is available on
-        vue3 official docs
+        vue3 official docs you can also chain taht modifiers to gather as well
+        to see all possible modifires and diffrent useage visit vue 3 doc and event handling in it
         the syntax of event modifier is v-on:<event_name>.<modifier_name>  -->
         <button v-on:click.right="clickBtn"> right click</button>
 
@@ -100,6 +101,9 @@
         our input field value with data property with v-bind:value -->
         <input type="text" v-on:input="updateInputValue" v-bind:value="inputOne">
         <p> {{ inputOne }} </p>
+        <!-- some times it also happens that we have to use multiple handlers in any event for that
+        we can saprate them by coma
+        ex: @click="one($event), two($event)",  @click="one, two($event)", @click="one, two" @click="counter++, two($event)" -->
 
         <!-- this is vary common task in vue js to bind input value with data in a way
         that if changes happen in data template side or in code side we want ro update
