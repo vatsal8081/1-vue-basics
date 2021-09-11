@@ -112,6 +112,14 @@
         <p> {{ inputTwo }} </p>
 
         <!-- 12 -->
+        <!-- some times in some special cases we don't know which dynamic property
+        to bind we have that property name in our vue object or we want to calculate somthing and base on that we want to deside which property to bing for that vue provide [] syntex to bind property from data -->
+        <a v-bind:[attribute]="vueDoc"> dynamic arrribute name </a> <br><br>
+        <a v-on:[event]="clickBtn"> dynamic event name </a> <br><br>
+        <!-- when working with type of case keep in mind notes that it looks like
+        a array to you but it's just html attribute name for browser only vue will understand so browser will not understand it when you give name for data property or computed property in camelcase in [] because browser will parse it in all small case so it will not work also js expeissions will also not work in it like ['foo' + event] so when use this kind or senirio use vaeiavle name which is not camlcase and if wat to do somthing like ['foo' + event] use computed property insted to return this kind of expressions-->
+
+        <!-- 13 -->
         <!-- vary imp -->
         <!--  -->
         <!-- notice one thing in code when we click to add or reduce counter buttons
@@ -151,6 +159,6 @@
 
 
 <script src="https://unpkg.com/vue@next"></script>
-<script src="main.js"></script>
+<script src="tmp.js"></script>
 
 </html>
